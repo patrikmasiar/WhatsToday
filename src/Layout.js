@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { NavBar } from './components/ui';
+import { View } from 'react-native';
+import { NavBar, Title } from './components/ui';
 
 const Layout = () => {
   return (
     <View style={{ flex: 1 }}>
       <NavBar
-        title={<Text style={{ fontSize: 18, color: '#fff' }}>Today</Text>}
+        title={<Title />}
       />
     </View>
   );

@@ -1,11 +1,11 @@
-//
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 export default class App extends Component {
 
   state = {
-    weatherInfo: null,
+    degrees: null,
+    city: null
   };
 
   componentDidMount() {
@@ -18,17 +18,33 @@ export default class App extends Component {
         'http://api.openweathermap.org/data/2.5/weather?id=3058498&appid=88e3301da7aca86544ed0acdea1b14f0',
       );
       let responseJson = await response.json();
-      this.setState({ weatherInfo: parseFloat(responseJson.main.temp - 273.15).toFixed(1) });
+      this.setState({
+        degrees: parseFloat(responseJson.main.temp - 273.15).toFixed(1),
+        city: responseJson.name
+      });
     } catch (error) {
       console.error(error);
     }
   };
 
   render() {
+
     return (
-      <Text style={{ color: '#3ded88' }}>
-        {this.state.weatherInfo}
-      </Text>
+      <View style={{
+        alignItems: 'center'
+      }}>
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={{ color: '#fff', fontSize: 40, fontWeight: '100' }}>
+            {this.state.degrees !== null && `${this.state.degrees}`}
+          </Text>
+          <Text style={{ color: '#3ded88', fontSize: 40, fontWeight: '100' }}>
+            {this.state.degrees !== null && '°C'}
+          </Text>
+        </View>
+        <Text style={{ color: '#fff', fontSize: 15 }}>
+          {this.state.city}
+        </Text>
+      </View>
     );
   }
 }

@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "moment": "^2.24.0",
-    "native-base": "^2.10.0",
     "react": "16.6.3",
     "react-native": "0.58.1",
     "react-native-navbar": "^2.1.0"

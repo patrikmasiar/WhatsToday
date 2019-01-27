@@ -1,6 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
-import { NavBar, Title } from './components/ui';
+import { NavBar } from './components/ui';
+import Title from './components/Title';
+import WeatherInfo from './components/WeatherInfo';
 
 const Layout = () => {
   return (
@@ -8,6 +10,9 @@ const Layout = () => {
       <NavBar
         title={<Title />}
       />
+      <View style={{ flex: 1 }}>
+        <WeatherInfo />
+      </View>
     </View>
   );
 };

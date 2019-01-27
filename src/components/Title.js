@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { getTitleGreeting } from '../../libs';
+import { getTitleGreeting } from '../libs';
 import moment from 'moment';
 
 const Title = () => {
@@ -12,4 +12,4 @@ const Title = () => {
   );
 };
 
-export default Title
+export default Title;

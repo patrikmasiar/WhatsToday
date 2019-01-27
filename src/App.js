@@ -5,10 +5,10 @@ import Layout from './Layout';
 export default class App extends Component {
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: '#260063' }}>
         <StatusBar
-          backgroundColor={ '#d6e5f3' }
-          barStyle={ 'dark-content' }
+          backgroundColor={ '#42229d' }
+          barStyle={ 'light-content' }
         />
         <Layout />
       </View>

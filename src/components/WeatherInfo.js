@@ -31,7 +31,13 @@ export default class App extends Component {
 
     return (
       <View style={{
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'rgba(0,0,0,0.2)',
+        borderWidth: 0.5,
+        borderColor: 'rgba(255,255,255,0.2)',
+        marginHorizontal: 25,
+        paddingVertical: 15,
+        borderRadius: 10
       }}>
         <View style={{ flexDirection: 'row' }}>
           <Text style={{ color: '#fff', fontSize: 40, fontWeight: '100' }}>

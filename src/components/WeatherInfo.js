@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import Icon from '../libs/weatherIcon';
+import weatherIcons from '../data/icons.json';
 
 export default class WeatherInfo extends Component {
 
   state = {
     degrees: null,
-    city: null
+    city: null,
+    icon: null,
   };
 
   componentDidMount() {
@@ -21,12 +23,27 @@ export default class WeatherInfo extends Component {
       let responseJson = await response.json();
       this.setState({
         degrees: parseFloat(responseJson.main.temp - 273.15).toFixed(1),
-        city: responseJson.name
+        city: responseJson.name,
+        icon: responseJson.weather[0].id,
       });
     } catch (error) {
       console.error(error);
     }
   };
+
+  getIcon() {
+    const prefix = 'wi-';
+    const code = this.state.icon !== null ? this.state.icon : 200;
+    var icon = weatherIcons[code].icon;
+
+    if (!(code > 699 && code < 800) && !(code > 899 && code < 1000)) {
+      icon = 'wi-day-'+ icon;
+    } else {
+      icon = prefix + icon;
+    }
+
+    return icon;
+  }
 
   render() {
 
@@ -37,11 +54,22 @@ export default class WeatherInfo extends Component {
         borderWidth: 0.5,
         borderColor: 'rgba(255,255,255,0.2)',
         marginHorizontal: 25,
-        marginTop: 30,
-        paddingVertical: 15,
-        borderRadius: 10
+        marginTop: 50,
+        paddingTop: 40,
+        paddingBottom: 15,
+        borderRadius: 10,
+        position: 'relative'
       }}>
-        <Icon name="wi-day-sunny" style={{ color: 'white', fontSize: 30 }} />
+        <View style={{
+          position: 'absolute',
+          backgroundColor: '#42229d',
+          borderRadius: 60,
+          borderWidth: 0.5,
+          borderColor: 'rgba(255,255,255,0.2)',
+          top: -35,
+        }}>
+          <Icon name={this.getIcon()} style={{ color: 'white', fontSize: 65 }} />
+        </View>
         <View style={{ flexDirection: 'row' }}>
           <Text style={{ color: '#fff', fontSize: 40, fontWeight: '100' }}>
             {this.state.degrees !== null && `${this.state.degrees}`}

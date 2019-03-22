@@ -19,7 +19,6 @@ export default class NameDayInfo extends Component {
     return (
       <View style={{
         justifyContent: 'center',
-        marginHorizontal: 25,
         marginTop: 20,
         flexDirection: 'row',
       }}>

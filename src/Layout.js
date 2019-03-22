@@ -4,6 +4,7 @@ import { NavBar } from './components/ui';
 import Title from './components/Title';
 import WeatherInfo from './components/WeatherInfo';
 import NameDayInfo from './components/NameDayInfo';
+import DateInfo from './components/DateInfo';
 
 const Layout = () => {
   return (
@@ -12,6 +13,7 @@ const Layout = () => {
         title={<Title />}
       />
       <View style={{ flex: 1 }}>
+        <DateInfo />
         <WeatherInfo />
         <NameDayInfo />
       </View>

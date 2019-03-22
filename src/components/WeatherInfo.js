@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
+import Icon from '../libs/weatherIcon';
 
 export default class WeatherInfo extends Component {
 
@@ -40,6 +41,7 @@ export default class WeatherInfo extends Component {
         paddingVertical: 15,
         borderRadius: 10
       }}>
+        <Icon name="wi-day-sunny" style={{ color: 'white', fontSize: 30 }} />
         <View style={{ flexDirection: 'row' }}>
           <Text style={{ color: '#fff', fontSize: 40, fontWeight: '100' }}>
             {this.state.degrees !== null && `${this.state.degrees}`}

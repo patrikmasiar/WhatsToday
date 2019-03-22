@@ -1,8 +1,9 @@
 import days from '../data/days.json';
 import nameDays from '../data/namedays.json';
+import months from '../data/months.json';
 
 export const getTitleGreeting = (currentHour) => {
-  if ( currentHour < 10 ) {
+  if ( currentHour < 10 && currentHour ) {
     return 'Dobré ráno';
   }
 
@@ -10,7 +11,7 @@ export const getTitleGreeting = (currentHour) => {
     return 'Ahoj';
   }
 
-  if ( currentHour > 13 ) {
+  if ( currentHour > 13 && currentHour < 17 ) {
     return 'Dobrý deň';
   }
 
@@ -33,4 +34,11 @@ export const getDayName = () => {
   const day = date.getDay();
 
   return days[day];
+};
+
+export const getMonthName = () => {
+  const date = new Date();
+  const month = date.getMonth();
+
+  return months[month];
 };

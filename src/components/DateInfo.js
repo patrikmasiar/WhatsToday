@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import moment from 'moment';
-import { getDayName } from '../libs'
+import { getDayName, getMonthName } from '../libs'
 
 const DateInfo = () => (
   <View style={{
@@ -11,7 +11,7 @@ const DateInfo = () => (
     <Text style={{
       color: '#3ded88',
       alignSelf: 'center',
-      fontSize: 22,
+      fontSize: 24,
       fontWeight: '500',
     }}>
       {getDayName()}
@@ -36,16 +36,10 @@ const DateInfo = () => (
       </Text>
       <Text style={{
         color: '#fff',
-        fontSize: 25,
+        fontSize: 22,
         fontWeight: '500',
       }}>
-        {moment().format('M')}
-      </Text>
-      <Text style={{
-        color: '#fff',
-        fontSize: 20,
-      }}>
-        .
+        {` ${getMonthName()} `}
       </Text>
       <Text style={{
         color: '#fff',

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 
-export default class App extends Component {
+export default class WeatherInfo extends Component {
 
   state = {
     degrees: null,
@@ -36,6 +36,7 @@ export default class App extends Component {
         borderWidth: 0.5,
         borderColor: 'rgba(255,255,255,0.2)',
         marginHorizontal: 25,
+        marginTop: 20,
         paddingVertical: 15,
         borderRadius: 10
       }}>

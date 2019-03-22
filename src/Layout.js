@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { NavBar } from './components/ui';
 import Title from './components/Title';
 import WeatherInfo from './components/WeatherInfo';
+import NameDayInfo from './components/NameDayInfo';
 
 const Layout = () => {
   return (
@@ -12,6 +13,7 @@ const Layout = () => {
       />
       <View style={{ flex: 1 }}>
         <WeatherInfo />
+        <NameDayInfo />
       </View>
     </View>
   );

@@ -1,42 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
-import data from '../data/namedays.json';
+import { getNameDay } from '../libs/index.js';
 
-export default class NameDayInfo extends Component {
+const NameDayInfo = () => (
+  <View style={{
+    justifyContent: 'center',
+    marginTop: 20,
+    flexDirection: 'row',
+  }}>
+    <Text style={{
+      color: '#fff',
+      fontWeight: '500',
+    }}>
+      Dnes má meniny
+    </Text>
+    <Text style={{
+      color: '#fff',
+      textAlign: 'center',
+    }}>
+      {` ${getNameDay()}`}
+    </Text>
+  </View>
+);
 
-  getNameDay() {
-    const date = new Date();
-    const month = date.getMonth();
-    const day = date.getDate();
-
-    const names = data[month][day].split(',');
-    return names.slice(0, 2).join(', ');
-  }
-
- 
-  render() {
-
-    return (
-      <View style={{
-        justifyContent: 'center',
-        marginTop: 20,
-        flexDirection: 'row',
-      }}>
-        <Text style={{
-          color: '#fff',
-          fontWeight: '500',
-        }}>
-          Dnes má meniny
-        </Text>
-        <Text style={{
-          color: '#fff',
-          textAlign: 'center',
-        }}>
-          {` ${this.getNameDay()}`}
-        </Text>
-      </View>
-    );
-  }
-}
-
-
+export default NameDayInfo;

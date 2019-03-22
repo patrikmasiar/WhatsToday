@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import moment from 'moment';
+import { getDayName } from '../libs'
 
 const DateInfo = () => (
   <View style={{
@@ -8,11 +9,51 @@ const DateInfo = () => (
     marginTop: 20,
   }}>
     <Text style={{
-      color: '#fff',
-      textAlign: 'center',
+      color: '#3ded88',
+      alignSelf: 'center',
+      fontSize: 22,
+      fontWeight: '500',
     }}>
-      {moment().format('DD.MM.YYYY')}
+      {getDayName()}
     </Text>
+    <View style={{
+      justifyContent: 'center',
+      alignItems: 'flex-end',
+      marginTop: 3,
+      flexDirection: 'row',
+    }}>
+      <Text style={{
+        color: '#fff',
+        fontSize: 20,
+      }}>
+        {moment().format('D')}
+      </Text>
+      <Text style={{
+        color: '#fff',
+        fontSize: 20,
+      }}>
+        .
+      </Text>
+      <Text style={{
+        color: '#fff',
+        fontSize: 25,
+        fontWeight: '500',
+      }}>
+        {moment().format('M')}
+      </Text>
+      <Text style={{
+        color: '#fff',
+        fontSize: 20,
+      }}>
+        .
+      </Text>
+      <Text style={{
+        color: '#fff',
+        fontSize: 20,
+      }}>
+        {moment().format('YYYY')}
+      </Text>
+    </View>
   </View>
 );
  

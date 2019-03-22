@@ -54,8 +54,8 @@ export default class WeatherInfo extends Component {
         borderWidth: 0.5,
         borderColor: 'rgba(255,255,255,0.2)',
         marginHorizontal: 25,
-        marginTop: 55,
-        paddingTop: 40,
+        marginTop: 60,
+        paddingTop: 35,
         paddingBottom: 15,
         borderRadius: 10,
         position: 'relative'
@@ -68,17 +68,17 @@ export default class WeatherInfo extends Component {
           borderColor: 'rgba(255,255,255,0.2)',
           top: -35,
         }}>
-          <Icon name={this.getIcon()} style={{ color: 'white', fontSize: 65 }} />
+          <Icon name={this.getIcon()} style={{ color: 'white', fontSize: 70 }} />
         </View>
-        <View style={{ flexDirection: 'row' }}>
-          <Text style={{ color: '#fff', fontSize: 40, fontWeight: '100' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
+          <Text style={{ color: '#fff', fontSize: 42, fontWeight: '100' }}>
             {this.state.degrees !== null && `${this.state.degrees}`}
           </Text>
-          <Text style={{ color: '#3ded88', fontSize: 40, fontWeight: '100' }}>
+          <Text style={{ color: '#3ded88', fontSize: 42, fontWeight: '100' }}>
             {this.state.degrees !== null && '°C'}
           </Text>
         </View>
-        <Text style={{ color: '#fff', fontSize: 15 }}>
+        <Text style={{ color: '#fff', fontSize: 16, marginTop: 8 }}>
           {this.state.city}
         </Text>
       </View>

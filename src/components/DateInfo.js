@@ -24,26 +24,26 @@ const DateInfo = () => (
     }}>
       <Text style={{
         color: '#fff',
-        fontSize: 20,
+        fontSize: 18,
       }}>
         {moment().format('D')}
       </Text>
       <Text style={{
         color: '#fff',
-        fontSize: 20,
+        fontSize: 18,
       }}>
         .
       </Text>
       <Text style={{
         color: '#fff',
-        fontSize: 22,
+        fontSize: 20,
         fontWeight: '500',
       }}>
         {` ${getMonthName()} `}
       </Text>
       <Text style={{
         color: '#fff',
-        fontSize: 20,
+        fontSize: 18,
       }}>
         {moment().format('YYYY')}
       </Text>

@@ -34,7 +34,7 @@ export default class WeatherInfo extends Component {
   getIcon() {
     const prefix = 'wi-';
     const code = this.state.icon !== null ? this.state.icon : 200;
-    var icon = weatherIcons[code].icon;
+    let icon = weatherIcons[code].icon;
 
     if (!(code > 699 && code < 800) && !(code > 899 && code < 1000)) {
       icon = 'wi-day-'+ icon;

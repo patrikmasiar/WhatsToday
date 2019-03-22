@@ -26,7 +26,7 @@ export const getNameDay = () => {
   const day = date.getDate();
 
   const names = nameDays[month][day].split(',');
-  return names.slice(0, 2).join(', ');
+  return names.slice(0, 3).join(',').split(',');
 };
 
 export const getDayName = () => {

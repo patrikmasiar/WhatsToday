@@ -11,7 +11,7 @@ const NameDayInfo = () => (
       color: '#fff',
       fontWeight: '500',
     }}>
-      Dnes má meniny
+      DNES MÁ MENINY:
     </Text>
     <View style={{ flexDirection: 'row', marginTop: 15 }}>
       {getNameDay().map((name, index) => {

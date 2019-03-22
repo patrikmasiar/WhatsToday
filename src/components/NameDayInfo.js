@@ -9,7 +9,8 @@ export default class NameDayInfo extends Component {
     const month = date.getMonth();
     const day = date.getDate();
 
-    return data[month][day];
+    const names = data[month][day].split(',');
+    return names.slice(0, 2).join(', ');
   }
 
  
@@ -17,21 +18,22 @@ export default class NameDayInfo extends Component {
 
     return (
       <View style={{
-        alignItems: 'center',
+        justifyContent: 'center',
         marginHorizontal: 25,
         marginTop: 20,
+        flexDirection: 'row',
       }}>
         <Text style={{
           color: '#fff',
           fontWeight: '500',
         }}>
-          Meniny má
+          Dnes má meniny
         </Text>
         <Text style={{
           color: '#fff',
           textAlign: 'center',
         }}>
-          {this.getNameDay()}
+          {` ${this.getNameDay()}`}
         </Text>
       </View>
     );

@@ -11,7 +11,7 @@ const DateInfo = () => (
     <Text style={{
       color: '#3ded88',
       alignSelf: 'center',
-      fontSize: 24,
+      fontSize: 16,
       fontWeight: '500',
     }}>
       {getDayName()}

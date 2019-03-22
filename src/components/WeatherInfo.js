@@ -54,7 +54,7 @@ export default class WeatherInfo extends Component {
         borderWidth: 0.5,
         borderColor: 'rgba(255,255,255,0.2)',
         marginHorizontal: 25,
-        marginTop: 50,
+        marginTop: 55,
         paddingTop: 40,
         paddingBottom: 15,
         borderRadius: 10,

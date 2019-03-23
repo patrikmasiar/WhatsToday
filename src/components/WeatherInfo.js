@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import Icon from '../libs/weatherIcon';
+import FaIcon from 'react-native-vector-icons/FontAwesome';
 import weatherIcons from '../data/icons.json';
 import PropTypes from 'prop-types';
 import { getCityName } from '../libs';
@@ -57,7 +58,7 @@ export default class WeatherInfo extends Component {
   }
 
   render() {
-    const { isDay } = this.props;
+    const { isDay, onSettingsPress } = this.props;
 
     return (
       <View style={{
@@ -83,6 +84,13 @@ export default class WeatherInfo extends Component {
         }}>
           <Icon name={this.getIcon()} style={{ color: 'white', fontSize: 80 }} />
         </View>
+        <TouchableOpacity
+          style={{ position: 'absolute', top: 10, right: 15 }}
+          onPress={ onSettingsPress }
+          hitSlop={{ top: 15, bottom: 15, left: 15, right: 15 }}
+        >
+          <FaIcon name={ 'cog' } size={ 25 } color={ '#fff' } />
+        </TouchableOpacity>
         <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
           <Text style={{ color: '#fff', fontSize: 50, fontWeight: '100' }}>
             {this.state.degrees !== null ? `${this.state.degrees}` : '--.-'}
@@ -101,4 +109,5 @@ export default class WeatherInfo extends Component {
 
 WeatherInfo.propTypes = {
   isDay: PropTypes.bool.isRequired,
+  onSettingsPress: PropTypes.func.isRequired,
 };

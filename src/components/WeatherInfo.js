@@ -75,7 +75,7 @@ export default class WeatherInfo extends Component {
       }}>
         <View style={{
           position: 'absolute',
-          backgroundColor: isDay ? '#26639a' : '#42229d',
+          backgroundColor: '#26639a',
           borderRadius: 60,
           borderWidth: 0.5,
           borderColor: 'rgba(255,255,255,0.2)',

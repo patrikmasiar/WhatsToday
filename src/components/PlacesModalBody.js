@@ -30,6 +30,7 @@ export default class PlacesModalBody extends Component {
   };
 
   render() {
+    const { isDay } = this.props;
     const { inputValue } = this.state;
 
     return (
@@ -56,15 +57,16 @@ export default class PlacesModalBody extends Component {
           renderItem={ item => (
             <TouchableOpacity
               style={{
-                backgroundColor: item.index % 2 === 0 ? 'rgba(255,255,255,0.5)' : 'transparent',
+                backgroundColor: item.index % 2 === 0 ? 'rgba(255,255,255,0.4)' : 'transparent',
               }}
               onPress={ this.handleSelectPlace.bind(this, item.item.id) }
             >
               <Text style={{
-                color: '#000',
+                color: isDay ? '#000' : '#fff',
                 paddingHorizontal: 15,
                 paddingVertical: 15,
                 fontSize: 15,
+                fontWeight: item.index % 2 === 0 ? '500' : '100',
               }}>{item.item.name}</Text>
             </TouchableOpacity>
           )}

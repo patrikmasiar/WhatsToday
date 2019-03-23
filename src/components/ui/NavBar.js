@@ -12,7 +12,7 @@ class NavBar extends Component {
         style: 'light-content',
       },
       containerStyle: {
-        backgroundColor: this.props.isDay ? '#26639a' : '#42229d',
+        backgroundColor: '#26639a',
         shadowColor: '#000',
         shadowOpacity: 0.1,
         shadowRadius: StyleSheet.hairlineWidth,

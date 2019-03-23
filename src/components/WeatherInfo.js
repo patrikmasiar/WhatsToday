@@ -16,19 +16,28 @@ export default class WeatherInfo extends Component {
     this.loadWeatherInfo();
   }
 
-  loadWeatherInfo = async () => {
-    try {
-      let response = await fetch(
-        'http://api.openweathermap.org/data/2.5/weather?id=3058498&appid=88e3301da7aca86544ed0acdea1b14f0',
-      );
-      let responseJson = await response.json();
-      this.setState({
-        degrees: parseFloat(responseJson.main.temp - 273.15).toFixed(1),
-        city: responseJson.name,
-        icon: responseJson.weather[0].id,
-      });
-    } catch (error) {
-      console.error(error);
+  componentWillReceiveProps(nextProps) {
+    if (this.props.selectedPlace !== nextProps.selectedPlace) {
+      this.loadWeatherInfo(nextProps.selectedPlace);
+    }
+  }
+
+  loadWeatherInfo = async (selectedPlace = 3060972) => {
+    if (selectedPlace !== null) {
+
+      try {
+        let response = await fetch(
+          `http://api.openweathermap.org/data/2.5/weather?id=${selectedPlace}&appid=88e3301da7aca86544ed0acdea1b14f0`,
+        );
+        let responseJson = await response.json();
+        this.setState({
+          degrees: parseFloat(responseJson.main.temp - 273.15).toFixed(1),
+          city: responseJson.name,
+          icon: responseJson.weather[0].id,
+        });
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
@@ -75,10 +84,10 @@ export default class WeatherInfo extends Component {
         </View>
         <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
           <Text style={{ color: '#fff', fontSize: 50, fontWeight: '100' }}>
-            {this.state.degrees !== null && `${this.state.degrees}`}
+            {this.state.degrees !== null ? `${this.state.degrees}` : '--.-'}
           </Text>
           <Text style={{ color: isDay ? '#26639a' : '#3ded88', fontSize: 50, fontWeight: '100' }}>
-            {this.state.degrees !== null && '°C'}
+            °C
           </Text>
         </View>
         <Text style={{ color: '#fff', fontSize: 17, marginTop: 8 }}>

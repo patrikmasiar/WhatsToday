@@ -15,6 +15,7 @@ const Layout = () => {
     <View style={{ flex: 1}}>
       <NavBar
         title={<Title />}
+        isDay={isDay()}
       />
       <View style={{ position: 'relative', height: '100%', width: '100%' }}>
         <Image
@@ -28,9 +29,9 @@ const Layout = () => {
           }}
         />
         <View style={{ flex: 1, position: 'absolute', top: 0, left: 0, width: '100%' }}>
-          <DateInfo />
-          <WeatherInfo />
-          <NameDayInfo />
+          <DateInfo isDay={ isDay() } />
+          <WeatherInfo isDay={ isDay() } />
+          <NameDayInfo isDay={ isDay() } />
         </View>
       </View>
 

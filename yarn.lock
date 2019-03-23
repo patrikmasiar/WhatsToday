@@ -2950,7 +2950,7 @@ lodash@^4.0.0, lodash@^4.13.1, lodash@^4.17.10, lodash@^4.17.5, lodash@^4.3.0, l
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
 
-loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.3.1:
+loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.3.1, loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   dependencies:
@@ -3899,6 +3899,14 @@ prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.2:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
+prop-types@^15.7.2:
+  version "15.7.2"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.8.1"
+
 pseudomap@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
@@ -3965,6 +3973,10 @@ react-devtools-core@^3.4.0:
 react-is@^16.6.3:
   version "16.7.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.7.0.tgz#c1bd21c64f1f1364c6f70695ec02d69392f41bfa"
+
+react-is@^16.8.1:
+  version "16.8.5"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.5.tgz#c54ac229dd66b5afe0de5acbe47647c3da692ff8"
 
 react-native-navbar@^2.1.0:
   version "2.1.0"

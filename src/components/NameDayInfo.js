@@ -1,14 +1,18 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { getNameDay } from '../libs/index.js';
+import PropTypes from 'prop-types';
 
-const NameDayInfo = () => (
+const LIGHT_TEXT = '#fff';
+const DARK_TEXT = '#000';
+
+const NameDayInfo = ({ isDay }) => (
   <View style={{
     alignItems: 'center',
     marginTop: 20,
   }}>
     <Text style={{
-      color: '#fff',
+      color: isDay ? DARK_TEXT : LIGHT_TEXT,
       fontWeight: '500',
     }}>
       DNES MÁ MENINY:
@@ -36,5 +40,9 @@ const NameDayInfo = () => (
     </View>
   </View>
 );
+
+NameDayInfo.propTypes = {
+  isDay: PropTypes.bool.isRequired,
+};
 
 export default NameDayInfo;

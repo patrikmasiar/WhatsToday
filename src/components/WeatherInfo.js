@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import Icon from '../libs/weatherIcon';
 import weatherIcons from '../data/icons.json';
 import PropTypes from 'prop-types';
+import { getCityName } from '../libs';
 
 export default class WeatherInfo extends Component {
 
@@ -32,7 +33,7 @@ export default class WeatherInfo extends Component {
         let responseJson = await response.json();
         this.setState({
           degrees: parseFloat(responseJson.main.temp - 273.15).toFixed(1),
-          city: responseJson.name,
+          city: getCityName(selectedPlace),
           icon: responseJson.weather[0].id,
         });
       } catch (error) {

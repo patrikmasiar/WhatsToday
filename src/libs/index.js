@@ -3,6 +3,7 @@ import moment from 'moment';
 import days from '../data/days.json';
 import nameDays from '../data/namedays.json';
 import months from '../data/months.json';
+import cities from '../data/cities.json';
 
 export const getTitleGreeting = (currentHour) => {
   if ( currentHour < 10 && currentHour ) {
@@ -49,4 +50,10 @@ export const isDay = () => {
   const hour = parseInt(moment().format('H'));
 
   return hour > 6 && hour < 19;
+};
+
+export const getCityName = (cityId) => {
+  const filteredCity = cities.filter(city => city.id === cityId);
+
+  return filteredCity[0].name;
 };

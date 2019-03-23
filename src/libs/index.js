@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 import days from '../data/days.json';
 import nameDays from '../data/namedays.json';
 import months from '../data/months.json';
@@ -41,4 +43,14 @@ export const getMonthName = () => {
   const month = date.getMonth();
 
   return months[month];
+};
+
+export const isDay = () => {
+  const hour = parseInt(moment().format('H'));
+
+  if ( hour > 6 && hour < 19 ) {
+    return true;
+  }
+
+  return false;
 };

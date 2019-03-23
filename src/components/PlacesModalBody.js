@@ -36,13 +36,13 @@ export default class PlacesModalBody extends Component {
       <View style={{
         flex: 1,
       }}>
-        <View style={{ backgroundColor: 'gray', padding: 10 }}>
+        <View style={{ backgroundColor: '#26639a', paddingVertical: 15, paddingHorizontal: 10 }}>
           <TextInput
             style={{
               height: 40,
-              backgroundColor: 'rgba(255,255,255,0.8)',
+              backgroundColor: '#fff',
               borderRadius: 10,
-              paddingHorizontal: 5,
+              paddingHorizontal: 10,
             }}
             placeholder="Vyhľadať mesto"
             onChangeText={value => this.setState({inputValue: value})}
@@ -56,15 +56,15 @@ export default class PlacesModalBody extends Component {
           renderItem={ item => (
             <TouchableOpacity
               style={{
-                borderBottomWidth: 1,
-                borderBottomColor: 'lightgray'
+                backgroundColor: item.index % 2 === 0 ? 'rgba(255,255,255,0.5)' : 'transparent',
               }}
               onPress={ this.handleSelectPlace.bind(this, item.item.id) }
             >
               <Text style={{
                 color: '#000',
                 paddingHorizontal: 15,
-                paddingVertical: 10,
+                paddingVertical: 15,
+                fontSize: 15,
               }}>{item.item.name}</Text>
             </TouchableOpacity>
           )}

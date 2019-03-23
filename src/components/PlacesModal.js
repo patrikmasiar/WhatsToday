@@ -14,7 +14,7 @@ export default class PlacesModal extends Component {
       <Modal
         visible={ isVisible }
         onRequestClose={ onModalClose }
-        backgroundColor={ '#fff' }
+        backgroundColor={ isDay ? '#d0f1ff' : '#194a75' }
       >
         <NavBar
           title={{
@@ -33,7 +33,7 @@ export default class PlacesModal extends Component {
             </TouchableOpacity>
           }
         />
-        <PlacesModalBody onSelectPlace={ onSelectPlace } />
+        <PlacesModalBody isDay={ isDay } onSelectPlace={ onSelectPlace } />
       </Modal>
     );
   }

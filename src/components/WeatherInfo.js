@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View } from 'react-native';
 import Icon from '../libs/weatherIcon';
-import FaIcon from 'react-native-vector-icons/FontAwesome';
 import weatherIcons from '../data/icons.json';
 import PropTypes from 'prop-types';
 import { getCityName } from '../libs';
@@ -58,50 +57,26 @@ export default class WeatherInfo extends Component {
   }
 
   render() {
-    const { isDay, onSettingsPress } = this.props;
+    const { isDay } = this.props;
 
     return (
       <View style={{
-        alignItems: 'center',
-        backgroundColor: isDay ? 'rgba(38,99,154,0.3)' : 'rgba(0,0,0,0.2)',
-        borderWidth: 0.5,
-        borderColor: 'rgba(255,255,255,0.3)',
-        marginHorizontal: 25,
-        marginTop: 60,
-        paddingTop: 55,
+        //marginTop: 20,
         paddingBottom: 15,
         borderRadius: 20,
-        position: 'relative'
       }}>
-        <View style={{
-          position: 'absolute',
-          backgroundColor: '#26639a',
-          borderRadius: 60,
-          borderWidth: 0.5,
-          borderColor: 'rgba(255,255,255,0.2)',
-          top: -35,
-          padding: 5
-        }}>
-          <Icon name={this.getIcon()} style={{ color: 'white', fontSize: 80 }} />
-        </View>
-        <TouchableOpacity
-          style={{ position: 'absolute', top: 10, right: 15 }}
-          onPress={ onSettingsPress }
-          hitSlop={{ top: 15, bottom: 15, left: 15, right: 15 }}
-        >
-          <FaIcon name={ 'cog' } size={ 25 } color={ '#fff' } />
-        </TouchableOpacity>
-        <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
-          <Text style={{ color: '#fff', fontSize: 50, fontWeight: '100' }}>
+        <Text style={{ color: isDay ? '#000' : '#fff', fontSize: 35, marginTop: 8, fontWeight: '500' }}>
+          {this.state.city}
+        </Text>
+        <View style={{ alignItems: 'center', flexDirection: 'row', marginTop: 20 }}>
+          <Icon name={this.getIcon()} style={{ color: isDay ? '#26639a' : '#fff', fontSize: 180 }} />
+          <Text style={{ color: isDay ? '#000' : '#fff', fontSize: 50, fontWeight: '100', marginLeft: 10, opacity: 0.9 }}>
             {this.state.degrees !== null ? `${this.state.degrees}` : '--.-'}
           </Text>
           <Text style={{ color: isDay ? '#26639a' : '#3ded88', fontSize: 50, fontWeight: '100' }}>
             °C
           </Text>
         </View>
-        <Text style={{ color: '#fff', fontSize: 17, marginTop: 8 }}>
-          {this.state.city}
-        </Text>
       </View>
     );
   }
@@ -109,5 +84,4 @@ export default class WeatherInfo extends Component {
 
 WeatherInfo.propTypes = {
   isDay: PropTypes.bool.isRequired,
-  onSettingsPress: PropTypes.func.isRequired,
 };

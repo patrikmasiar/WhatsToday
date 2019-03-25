@@ -12,42 +12,32 @@ const DateInfo = ({ isDay }) => (
     justifyContent: 'center',
     marginTop: 20,
   }}>
-    <Text style={{
-      color: isDay ? '#26639a' : '#3ded88',
-      alignSelf: 'center',
-      fontSize: 16,
-      fontWeight: '500',
-    }}>
-      {getDayName()}
-    </Text>
     <View style={{
-      justifyContent: 'center',
       alignItems: 'flex-end',
       marginTop: 3,
       flexDirection: 'row',
     }}>
       <Text style={{
         color: isDay ? DARK_TEXT : LIGHT_TEXT,
-        fontSize: 18,
+        fontSize: 16,
       }}>
         {moment().format('D')}
       </Text>
       <Text style={{
         color: isDay ? DARK_TEXT : LIGHT_TEXT,
-        fontSize: 18,
+        fontSize: 16,
       }}>
         .
       </Text>
       <Text style={{
         color: isDay ? DARK_TEXT : LIGHT_TEXT,
-        fontSize: 20,
-        fontWeight: '500',
+        fontSize: 17,
       }}>
         {` ${getMonthName()} `}
       </Text>
       <Text style={{
         color: isDay ? DARK_TEXT : LIGHT_TEXT,
-        fontSize: 18,
+        fontSize: 16,
       }}>
         {moment().format('YYYY')}
       </Text>

@@ -4,6 +4,7 @@ import Icon from '../libs/weatherIcon';
 import weatherIcons from '../data/icons.json';
 import PropTypes from 'prop-types';
 import { getCityName } from '../libs';
+import FaIcon from 'react-native-vector-icons/FontAwesome';
 
 class WeatherInfo extends Component {
 
@@ -11,6 +12,8 @@ class WeatherInfo extends Component {
     degrees: null,
     city: null,
     icon: null,
+    max: null,
+    min: null,
   };
 
   componentDidMount() {
@@ -45,6 +48,8 @@ class WeatherInfo extends Component {
           let responseJson = await response.json();
           this.setState({
             degrees: parseFloat(responseJson.main.temp - 273.15).toFixed(1),
+            max: parseFloat(responseJson.main.temp_max - 273.15).toFixed(1),
+            min: parseFloat(responseJson.main.temp_min - 273.15).toFixed(1),
             city: getCityName(selectedPlace),
             icon: responseJson.weather[0].id,
           });
@@ -80,7 +85,7 @@ class WeatherInfo extends Component {
       <View style={{
         paddingBottom: 15,
         borderRadius: 20,
-        alignItems: 'center'
+        alignItems: 'center',
       }}>
         <Text style={{ color: isDay ? '#000' : '#fff', fontSize: 35, marginTop: 8, fontWeight: '500', alignSelf: 'flex-start' }}>
           {this.state.city}
@@ -95,6 +100,24 @@ class WeatherInfo extends Component {
           <Text style={{ color: isDay ? '#26639a' : '#3ded88', fontSize: 50, fontWeight: '100' }}>
             °C
           </Text>
+          <View style={{ flexDirection: 'row', position: 'absolute', bottom: 35, right: 0 }}>
+            {this.state.max !== null && (
+              <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 20 }}>
+                <FaIcon name={'arrow-up'} color={ isDay ? '#26639a' : '#3ded88' } />
+                <Text style={{ color: '#fff', marginLeft: 5 }}>
+                  {`${this.state.max}°C`}
+                </Text>
+              </View>
+            )}
+            {this.state.min !== null && (
+              <View style={{ flexDirection: 'row',  alignItems: 'center' }}>
+                <FaIcon name={'arrow-down'} color={ isDay ? '#26639a' : '#3ded88' } />
+                <Text style={{ color: '#fff', marginLeft: 5 }}>
+                  {`${this.state.min}°C`}
+                </Text>
+              </View>
+            )}
+          </View>
         </View>
       </View>
     );

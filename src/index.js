@@ -29,7 +29,7 @@ persistStore(
 const App = () => {
   return (
       <Provider store={store}>
-        <View style={{ flex: 1, backgroundColor: '#260063' }}>
+        <View style={{ flex: 1 }}>
           <StatusBar
             backgroundColor={ '#26639a' }
             barStyle={ 'light-content' }

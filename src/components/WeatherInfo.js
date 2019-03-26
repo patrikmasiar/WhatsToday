@@ -28,7 +28,7 @@ class WeatherInfo extends Component {
   }
 
   handleConnectionChange = (event) => {
-    console.log(event)
+    console.log('CONNECTION CHANGED:', event);
     if ( event.effectiveType !== null || event.effectiveType !== 'unknown' ) {
       this.loadWeatherInfo();
     }

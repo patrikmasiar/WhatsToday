@@ -5,7 +5,7 @@ import { NavBar, Modal } from './ui';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import PlacesModalBody from './PlacesModalBody';
 
-export default class PlacesModal extends Component {
+class PlacesModal extends Component {
 
   render() {
     const { isDay, isVisible, onModalClose, onSelectPlace } = this.props;
@@ -45,3 +45,5 @@ PlacesModal.propTypes = {
   onModalClose: PropTypes.func.isRequired,
   onSelectPlace: PropTypes.func.isRequired,
 };
+
+export default PlacesModal;

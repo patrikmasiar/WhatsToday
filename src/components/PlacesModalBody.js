@@ -3,7 +3,7 @@ import { View, TouchableOpacity, FlatList, Text, TextInput } from 'react-native'
 import cities from '../data/cities.json';
 import PropTypes from 'prop-types';
 
-export default class PlacesModalBody extends Component {
+class PlacesModalBody extends Component {
 
   state = {
     inputValue: '',
@@ -79,3 +79,5 @@ export default class PlacesModalBody extends Component {
 PlacesModalBody.propTypes = {
   onSelectPlace: PropTypes.func.isRequired,
 };
+
+export default PlacesModalBody;

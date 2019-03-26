@@ -8,15 +8,17 @@ import DateInfo from './components/DateInfo';
 import { isDay } from './libs';
 import PlacesModal from './components/PlacesModal';
 import FaIcon from 'react-native-vector-icons/FontAwesome';
+import store from './store/store';
+import { setWeatherCity } from './store/actions';
+import { connect } from 'react-redux';
 
 const DAY_BG = require('./img/daybg.png');
 const NIGHT_BG = require('./img/nightbg.png');
 
-export default class Layout extends Component {
+class Layout extends Component {
 
   state = {
     isPlacesModalShown: false,
-    selectedPlace: null,
   };
 
   handleShowPlacesModal = () => {
@@ -28,14 +30,16 @@ export default class Layout extends Component {
   };
 
   handleSelectPlace = (placeId) => {
+    store.dispatch(setWeatherCity({
+      city: placeId,
+    }));
     this.setState({
-      selectedPlace: placeId,
       isPlacesModalShown: false,
     });
   };
 
   render() {
-    const { isPlacesModalShown, selectedPlace } = this.state;
+    const { isPlacesModalShown } = this.state;
 
     return (
       <View style={{ flex: 1 }}>
@@ -57,7 +61,7 @@ export default class Layout extends Component {
             <DateInfo isDay={ isDay() } />
             <WeatherInfo
               isDay={ isDay() }
-              selectedPlace={ selectedPlace }
+              selectedPlace={ this.props.city }
               onSettingsPress={ this.handleShowPlacesModal }
             />
             <NameDayInfo isDay={ isDay() } />
@@ -80,3 +84,9 @@ export default class Layout extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  city: state.city.city,
+});
+
+export default connect(mapStateToProps)(Layout);

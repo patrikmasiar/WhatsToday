@@ -75,7 +75,11 @@ class Layout extends Component {
               onSettingsPress={ this.handleShowPlacesModal }
             />
             <NameDayInfo isDay={ isDay() } />
-            <Notes isDay={ isDay() } onAddNotePress={ this.handleAddNoteModalShow } />
+            <Notes
+              isDay={ isDay() }
+              onAddNotePress={ this.handleAddNoteModalShow }
+              notes={[]}
+            />
           </View>
           <TouchableOpacity
             style={{ position: 'absolute', top: 20, right: 15 }}

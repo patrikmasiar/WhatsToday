@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, TouchableOpacity } from 'react-native';
+import { View, FlatList } from 'react-native';
 import FaIcon from 'react-native-vector-icons/FontAwesome';
 import AddNoteBtn from './ui/AddNoteBtn';
 
 class Notes extends Component {
 
   render() {
-    const {isDay, onAddNotePress} = this.props;
+    const {isDay, onAddNotePress, notes} = this.props;
 
     return (
       <View
@@ -26,6 +26,10 @@ class Notes extends Component {
         }}
       >
         <AddNoteBtn isDay={ isDay } onPress={ onAddNotePress } />
+        <FlatList
+          data={notes}
+          keyExtractor={(item, index) => index.toString()}
+        />
       </View>
     );
   }

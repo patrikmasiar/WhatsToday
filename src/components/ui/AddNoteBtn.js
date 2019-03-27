@@ -13,7 +13,7 @@ const AddNoteBtn = ({ onPress, isDay }) => (
       paddingVertical: 10,
       justifyContent: 'center',
       borderRadius: 10,
-      borderWidth: 1,
+      borderWidth: 0.7,
       borderBottomWidth: 4
     }}
     onPress={onPress}

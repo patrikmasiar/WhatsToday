@@ -13,11 +13,11 @@ const NameDayInfo = ({ isDay }) => (
     paddingVertical: 15,
     borderRadius: 20,
     elevation: 3,
-      shadowOpacity: 1,
-      shadowRadius: 4,
-      shadowOffset: {
-        height: 4,
-      }
+    shadowOpacity: 1,
+    shadowRadius: 4,
+    shadowOffset: {
+      height: 4,
+    }
   }}>
     <Text style={{
       color: isDay ? '#26639a' : LIGHT_TEXT,

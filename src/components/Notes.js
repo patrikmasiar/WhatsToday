@@ -18,11 +18,11 @@ class Notes extends Component {
           marginTop: 10,
           borderRadius: 20,
           elevation: 3,
-            shadowOpacity: 1,
-            shadowRadius: 4,
-            shadowOffset: {
-              height: 4,
-            }
+          shadowOpacity: 1,
+          shadowRadius: 4,
+          shadowOffset: {
+            height: 4,
+          }
         }}
       >
         <AddNoteBtn isDay={ isDay } onPress={ onAddNotePress } />

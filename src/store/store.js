@@ -1,11 +1,12 @@
 import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
 import { autoRehydrate } from 'redux-persist';
-import { initReducer, cityReducer } from './reducers';
+import { initReducer, cityReducer, notesReducer } from './reducers';
 
 export default createStore(
   combineReducers({
     app: initReducer,
     city: cityReducer,
+    notes: notesReducer,
   }),
   {},
   compose(

@@ -19,6 +19,7 @@ persistStore(
     whitelist: [
       'city',
       'app',
+      'notes',
     ],
   },
   () => {

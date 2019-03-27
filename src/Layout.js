@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, TouchableOpacity } from 'react-native';
+import { ScrollView, View, Image, TouchableOpacity } from 'react-native';
 import { NavBar } from './components/ui';
 import Title from './components/Title';
 import WeatherInfo from './components/WeatherInfo';
@@ -12,6 +12,7 @@ import store from './store/store';
 import { setWeatherCity } from './store/actions';
 import { connect } from 'react-redux';
 import Notes from './components/Notes';
+import AddNoteModal from './components/AddNoteModal';
 
 const DAY_BG = require('./img/daybg.png');
 const NIGHT_BG = require('./img/nightbg.png');
@@ -49,10 +50,12 @@ class Layout extends Component {
   };
 
   render() {
-    const { isPlacesModalShown } = this.state;
+    const { isPlacesModalShown, isNoteModalShown } = this.state;
 
     return (
-      <View style={{ flex: 1 }}>
+      <ScrollView
+        contentContainerStyle={{ flex: 1 }}
+      >
         <NavBar
           title={ <Title /> }
         />
@@ -78,7 +81,7 @@ class Layout extends Component {
             <Notes
               isDay={ isDay() }
               onAddNotePress={ this.handleAddNoteModalShow }
-              notes={[]}
+              notes={ this.props.notes }
             />
           </View>
           <TouchableOpacity
@@ -95,13 +98,18 @@ class Layout extends Component {
           isDay={ isDay() }
           onSelectPlace={ this.handleSelectPlace }
         />
-      </View>
+        <AddNoteModal
+          isVisible={ isNoteModalShown }
+          onModalClose={ this.handleAddNoteModalHide }
+        />
+      </ScrollView>
     );
   }
 }
 
 const mapStateToProps = state => ({
   city: state.city.city,
+  notes: state.notes.notes
 });
 
 export default connect(mapStateToProps)(Layout);

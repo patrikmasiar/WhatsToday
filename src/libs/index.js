@@ -49,6 +49,7 @@ export const getMonthName = () => {
 export const isDay = () => {
   const hour = parseInt(moment().format('H'));
 
+  //return false;
   return hour > 6 && hour < 19;
 };
 

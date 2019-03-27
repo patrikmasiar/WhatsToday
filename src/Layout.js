@@ -11,6 +11,7 @@ import FaIcon from 'react-native-vector-icons/FontAwesome';
 import store from './store/store';
 import { setWeatherCity } from './store/actions';
 import { connect } from 'react-redux';
+import Notes from './components/Notes';
 
 const DAY_BG = require('./img/daybg.png');
 const NIGHT_BG = require('./img/nightbg.png');
@@ -19,6 +20,7 @@ class Layout extends Component {
 
   state = {
     isPlacesModalShown: false,
+    isNoteModalShown: false,
   };
 
   handleShowPlacesModal = () => {
@@ -36,6 +38,14 @@ class Layout extends Component {
     this.setState({
       isPlacesModalShown: false,
     });
+  };
+
+  handleAddNoteModalShow = () => {
+    this.setState({ isNoteModalShown: true });
+  };
+
+  handleAddNoteModalHide = () => {
+    this.setState({ isNoteModalShown: false });
   };
 
   render() {
@@ -65,6 +75,7 @@ class Layout extends Component {
               onSettingsPress={ this.handleShowPlacesModal }
             />
             <NameDayInfo isDay={ isDay() } />
+            <Notes isDay={ isDay() } onAddNotePress={ this.handleAddNoteModalShow } />
           </View>
           <TouchableOpacity
             style={{ position: 'absolute', top: 20, right: 15 }}

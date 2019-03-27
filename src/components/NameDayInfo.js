@@ -9,11 +9,15 @@ const DARK_TEXT = '#000';
 const NameDayInfo = ({ isDay }) => (
   <View style={{
     alignItems: 'center',
-    backgroundColor: isDay ? 'rgba(38,99,154,0.3)' : 'rgba(0,0,0,0.2)',
-    borderWidth: 0.5,
-    borderColor: 'rgba(255,255,255,0.3)',
+    backgroundColor: isDay ? '#fff' : '#194a75',
     paddingVertical: 15,
     borderRadius: 20,
+    elevation: 3,
+      shadowOpacity: 1,
+      shadowRadius: 4,
+      shadowOffset: {
+        height: 4,
+      }
   }}>
     <Text style={{
       color: isDay ? '#26639a' : LIGHT_TEXT,

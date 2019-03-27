@@ -104,7 +104,7 @@ class WeatherInfo extends Component {
             {this.state.max !== null && (
               <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 20 }}>
                 <FaIcon name={'arrow-up'} color={ isDay ? '#26639a' : '#3ded88' } />
-                <Text style={{ color: '#fff', marginLeft: 5 }}>
+                <Text style={{ color: isDay ? '#000' : '#fff', marginLeft: 5 }}>
                   {`${this.state.max}°C`}
                 </Text>
               </View>
@@ -112,7 +112,7 @@ class WeatherInfo extends Component {
             {this.state.min !== null && (
               <View style={{ flexDirection: 'row',  alignItems: 'center' }}>
                 <FaIcon name={'arrow-down'} color={ isDay ? '#26639a' : '#3ded88' } />
-                <Text style={{ color: '#fff', marginLeft: 5 }}>
+                <Text style={{ color: isDay ? '#000' : '#fff', marginLeft: 5 }}>
                   {`${this.state.min}°C`}
                 </Text>
               </View>

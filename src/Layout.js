@@ -67,7 +67,7 @@ class Layout extends Component {
         <NavBar
           title={ <Title /> }
         />
-        <View style={{ position: 'relative', height: '100%', width: '100%' }}>
+        <View style={{ flex: 1 }}>
           <Image
             source={isDay() ? DAY_BG : NIGHT_BG}
             style={{

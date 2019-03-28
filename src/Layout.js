@@ -9,7 +9,7 @@ import { isDay } from './libs';
 import PlacesModal from './components/PlacesModal';
 import FaIcon from 'react-native-vector-icons/FontAwesome';
 import store from './store/store';
-import { setWeatherCity } from './store/actions';
+import { setWeatherCity, addToNote } from './store/actions';
 import { connect } from 'react-redux';
 import Notes from './components/Notes';
 import AddNoteModal from './components/AddNoteModal';
@@ -47,6 +47,14 @@ class Layout extends Component {
 
   handleAddNoteModalHide = () => {
     this.setState({ isNoteModalShown: false });
+  };
+
+  handleAddNewNote = (note) => {
+    store.dispatch(addToNote({
+      text: note,
+      createdAt: new Date(),
+    }));
+    this.handleAddNoteModalHide();
   };
 
   render() {
@@ -101,6 +109,7 @@ class Layout extends Component {
         <AddNoteModal
           isVisible={ isNoteModalShown }
           onModalClose={ this.handleAddNoteModalHide }
+          onSubmit={this.handleAddNewNote}
         />
       </ScrollView>
     );

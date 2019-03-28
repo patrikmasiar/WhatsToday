@@ -10,11 +10,16 @@ const AddNoteBtn = ({ onPress, isDay }) => (
       alignItems: 'center',
       backgroundColor: isDay ? '#26639a' : '#3ded88',
       width: '90%',
-      paddingVertical: 10,
+      paddingVertical: 15,
       justifyContent: 'center',
-      borderRadius: 10,
-      borderWidth: 0.7,
-      borderBottomWidth: 4
+      borderRadius: 40,
+      elevation: 10,
+      shadowOpacity: 0.6,
+      shadowColor: '#000',
+      shadowRadius: 6,
+      shadowOffset: {
+          height: 5,
+      },
     }}
     onPress={onPress}
     activeOpacity={0.8}

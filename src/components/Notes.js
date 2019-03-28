@@ -29,6 +29,7 @@ class Notes extends Component {
         <FlatList
           data={notes}
           keyExtractor={(item, index) => index.toString()}
+          renderItem={item => console.log(item.item)}
         />
       </View>
     );

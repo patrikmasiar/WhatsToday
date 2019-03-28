@@ -13,7 +13,7 @@ const AddNoteBtn = ({ onPress, isDay }) => (
       paddingVertical: 15,
       justifyContent: 'center',
       borderRadius: 40,
-      elevation: 10,
+      elevation: 4,
       shadowOpacity: 0.6,
       shadowColor: '#000',
       shadowRadius: 6,

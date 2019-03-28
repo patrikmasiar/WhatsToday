@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View, FlatList } from 'react-native';
 import FaIcon from 'react-native-vector-icons/FontAwesome';
 import AddNoteBtn from './ui/AddNoteBtn';
+import NoteListItem from './ui/NoteListItem';
 
 class Notes extends Component {
 
@@ -27,9 +28,15 @@ class Notes extends Component {
       >
         <AddNoteBtn isDay={ isDay } onPress={ onAddNotePress } />
         <FlatList
+          style={{marginTop: 20, width: '90%'}}
           data={notes}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={item => console.log(item.item)}
+          renderItem={item => (
+            <NoteListItem
+              message={item.item.text}
+            />
+          )}
+          ItemSeparatorComponent={() => <View style={{ height: 10, backgroundColor: 'transparent' }} />}
         />
       </View>
     );

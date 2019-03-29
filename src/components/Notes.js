@@ -29,7 +29,7 @@ class Notes extends Component {
       >
         <AddNoteBtn isDay={ isDay } onPress={ onAddNotePress } />
         <FlatList
-          style={{marginTop: 20, width: '100%', paddingBottom: 20}}
+          style={{marginTop: 20, width: '100%'}}
           data={notes}
           keyExtractor={(item, index) => index.toString()}
           renderItem={item => (

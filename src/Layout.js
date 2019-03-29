@@ -65,7 +65,7 @@ class Layout extends Component {
         <NavBar
           title={ <Title /> }
         />
-        <ScrollView contentContainerStyle={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
           <Image
             source={isDay() ? DAY_BG : NIGHT_BG}
             style={{
@@ -76,7 +76,7 @@ class Layout extends Component {
               opacity: 1,
             }}
           />
-          <View style={{ flex: 1, position: 'absolute', top: 0, left: 0, width: '100%', paddingHorizontal: 15 }}>
+          <ScrollView style={{ flex: 1, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', paddingHorizontal: 15, }}>
             <DateInfo isDay={ isDay() } />
             <WeatherInfo
               isDay={ isDay() }
@@ -89,7 +89,8 @@ class Layout extends Component {
               onAddNotePress={ this.handleAddNoteModalShow }
               notes={ this.props.notes }
             />
-          </View>
+            <View style={{ height: 30, backgroundColor: 'transparent' }} />
+          </ScrollView>
           <TouchableOpacity
             style={{ position: 'absolute', top: 20, right: 15 }}
             onPress={ this.handleShowPlacesModal }
@@ -97,7 +98,7 @@ class Layout extends Component {
           >
             <FaIcon name={ 'cog' } size={ 25 } color={ isDay() ? '#26639a' : '#3ded88' } />
           </TouchableOpacity>
-        </ScrollView>
+        </View>
         <PlacesModal
           isVisible={ isPlacesModalShown }
           onModalClose={ this.handleHidePlacesModal }

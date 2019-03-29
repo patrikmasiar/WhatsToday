@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Image, TouchableOpacity } from 'react-native';
+import { ScrollView, View, Image } from 'react-native';
 import { NavBar } from './components/ui';
 import Title from './components/Title';
 import WeatherInfo from './components/WeatherInfo';
@@ -7,7 +7,6 @@ import NameDayInfo from './components/NameDayInfo';
 import DateInfo from './components/DateInfo';
 import { isDay } from './libs';
 import PlacesModal from './components/PlacesModal';
-import FaIcon from 'react-native-vector-icons/FontAwesome';
 import store from './store/store';
 import { setWeatherCity, addToNote } from './store/actions';
 import { connect } from 'react-redux';
@@ -77,7 +76,7 @@ class Layout extends Component {
             }}
           />
           <ScrollView style={{ flex: 1, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', paddingHorizontal: 15, }}>
-            <DateInfo isDay={ isDay() } />
+            <DateInfo isDay={ isDay() } onSettingsPress={ this.handleShowPlacesModal } />
             <WeatherInfo
               isDay={ isDay() }
               selectedPlace={ this.props.city }
@@ -91,13 +90,7 @@ class Layout extends Component {
             />
             <View style={{ height: 30, backgroundColor: 'transparent' }} />
           </ScrollView>
-          <TouchableOpacity
-            style={{ position: 'absolute', top: 20, right: 15 }}
-            onPress={ this.handleShowPlacesModal }
-            hitSlop={{ top: 15, bottom: 15, left: 15, right: 15 }}
-          >
-            <FaIcon name={ 'cog' } size={ 25 } color={ isDay() ? '#26639a' : '#3ded88' } />
-          </TouchableOpacity>
+          
         </View>
         <PlacesModal
           isVisible={ isPlacesModalShown }

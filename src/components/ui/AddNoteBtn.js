@@ -9,7 +9,7 @@ const AddNoteBtn = ({ onPress, isDay }) => (
       flexDirection: 'row',
       alignItems: 'center',
       backgroundColor: isDay ? '#26639a' : '#3ded88',
-      width: '90%',
+      width: '100%',
       paddingVertical: 15,
       justifyContent: 'center',
       borderRadius: 40,

@@ -23,17 +23,19 @@ class Notes extends Component {
           shadowRadius: 4,
           shadowOffset: {
             height: 4,
-          }
+          },
+          paddingHorizontal: 15,
         }}
       >
         <AddNoteBtn isDay={ isDay } onPress={ onAddNotePress } />
         <FlatList
-          style={{marginTop: 20, width: '90%'}}
+          style={{marginTop: 20, width: '100%', paddingBottom: 20}}
           data={notes}
           keyExtractor={(item, index) => index.toString()}
           renderItem={item => (
             <NoteListItem
               message={item.item.text}
+              isDay={isDay}
             />
           )}
           ItemSeparatorComponent={() => <View style={{ height: 10, backgroundColor: 'transparent' }} />}

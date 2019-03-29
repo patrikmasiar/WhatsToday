@@ -61,13 +61,11 @@ class Layout extends Component {
     const { isPlacesModalShown, isNoteModalShown } = this.state;
 
     return (
-      <ScrollView
-        contentContainerStyle={{ flex: 1 }}
-      >
+      <View style={{flex: 1}}>
         <NavBar
           title={ <Title /> }
         />
-        <View style={{ flex: 1 }}>
+        <ScrollView contentContainerStyle={{ flex: 1 }}>
           <Image
             source={isDay() ? DAY_BG : NIGHT_BG}
             style={{
@@ -99,7 +97,7 @@ class Layout extends Component {
           >
             <FaIcon name={ 'cog' } size={ 25 } color={ isDay() ? '#26639a' : '#3ded88' } />
           </TouchableOpacity>
-        </View>
+        </ScrollView>
         <PlacesModal
           isVisible={ isPlacesModalShown }
           onModalClose={ this.handleHidePlacesModal }
@@ -111,7 +109,7 @@ class Layout extends Component {
           onModalClose={ this.handleAddNoteModalHide }
           onSubmit={this.handleAddNewNote}
         />
-      </ScrollView>
+      </View>
     );
   }
 }

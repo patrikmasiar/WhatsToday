@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import FaIcon from 'react-native-vector-icons/FontAwesome';
 
-const NoteListItem = ({ message }) => (
+const NoteListItem = ({ message, isDay }) => (
   <View
     style={{
       flex: 1,
@@ -11,14 +11,16 @@ const NoteListItem = ({ message }) => (
       //width: '100%',
       //paddingVertical: 15,
       //justifyContent: 'center',
+      borderWidth: isDay ? 0.6 : 0,
+      borderColor: isDay ? '#f0f0f0' : 'transparent',
       padding: 10,
-      borderRadius: 10,
-      elevation: 4,
+      borderRadius: 8,
+      elevation: isDay ? 1 : 2,
       shadowOpacity: 0.6,
       shadowColor: '#000',
-      shadowRadius: 6,
+      shadowRadius: 2,
       shadowOffset: {
-          height: 5,
+          height: isDay ? 0 : 2,
       },
     }}
   >
@@ -29,7 +31,8 @@ const NoteListItem = ({ message }) => (
 );
 
 NoteListItem.propTypes = {
-  message: PropTypes.string.isRequired
+  message: PropTypes.string.isRequired,
+  isDay: PropTypes.bool.isRequired,
 };
 
 export default NoteListItem;

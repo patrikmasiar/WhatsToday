@@ -21,11 +21,13 @@ class AddNoteModal extends Component {
     }
 
     Keyboard.dismiss();
+    this.setState({value: ''});
     this.props.onSubmit(this.state.value);
   }
 
   handleModalClose = () => {
     Keyboard.dismiss();
+    this.setState({value: ''});
     this.props.onModalClose();
   }
 

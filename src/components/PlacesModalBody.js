@@ -3,6 +3,8 @@ import { View, TouchableOpacity, FlatList, Text, TextInput } from 'react-native'
 import cities from '../data/cities.json';
 import PropTypes from 'prop-types';
 
+const removeDiacritics = require('diacritics').remove;
+
 class PlacesModalBody extends Component {
 
   state = {
@@ -20,12 +22,11 @@ class PlacesModalBody extends Component {
       });
     }
 
-    const filteredCities = cities.filter((item) => {
-      const search = String(inputValue).toLowerCase()
-        .replace(/[\u0300-\u036f]/g, '');
-      return String(item.name).toLowerCase()
-        .replace(/[\u0300-\u036f]/g, '')
-        .includes(search);
+    const query = removeDiacritics(inputValue.toLowerCase());
+
+    const filteredCities = cities.filter(city => {
+      const cityName = removeDiacritics(city.name.toLowerCase());
+      return cityName.includes(query);
     });
 
     return filteredCities.sort((a, b) => {

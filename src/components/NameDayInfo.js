@@ -11,6 +11,7 @@ const NameDayInfo = ({ isDay }) => (
     alignItems: 'center',
     backgroundColor: isDay ? '#fff' : '#194a75',
     paddingVertical: 15,
+    marginHorizontal: 5,
     borderRadius: 20,
     elevation: 3,
     shadowOpacity: 1,

@@ -17,6 +17,7 @@ class Notes extends Component {
           alignItems: 'center',
           backgroundColor: isDay ? '#fff' : '#194a75',
           paddingVertical: 15,
+          marginHorizontal: 5,
           marginTop: 10,
           borderRadius: 20,
           elevation: 3,

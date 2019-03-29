@@ -87,17 +87,17 @@ class WeatherInfo extends Component {
         borderRadius: 20,
         alignItems: 'center',
       }}>
-        <Text style={{ color: isDay ? '#000' : '#fff', fontSize: 35, marginTop: 8, fontWeight: '500', alignSelf: 'flex-start' }}>
+        <Text style={{ color: isDay ? '#000' : '#fff', fontSize: 35, marginHorizontal: 5, marginTop: 8, fontWeight: '500', alignSelf: 'flex-start' }}>
           {this.state.city}
         </Text>
         <View style={{ alignItems: 'center', flexDirection: 'row', marginTop: 20 }}>
           {icon !== null && (
-            <Icon name={this.getIcon()} style={{ color: isDay ? '#26639a' : '#fff', fontSize: 180 }} />
+            <Icon name={this.getIcon()} style={{ color: isDay ? '#26639a' : '#fff', fontSize: 160 }} />
           )}
-          <Text style={{ color: isDay ? '#000' : '#fff', fontSize: 50, fontWeight: '100', marginLeft: 10, opacity: 0.9 }}>
+          <Text style={{ color: isDay ? '#000' : '#fff', fontSize: 45, fontWeight: '100', opacity: 0.9 }}>
             {this.state.degrees !== null ? `${this.state.degrees}` : '--.-'}
           </Text>
-          <Text style={{ color: isDay ? '#26639a' : '#3ded88', fontSize: 50, fontWeight: '100' }}>
+          <Text style={{ color: isDay ? '#26639a' : '#3ded88', fontSize: 45, fontWeight: '100' }}>
             °C
           </Text>
           <View style={{ flexDirection: 'row', position: 'absolute', bottom: 35, right: 0 }}>

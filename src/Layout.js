@@ -81,7 +81,7 @@ class Layout extends Component {
               opacity: 1,
             }}
           />
-          <ScrollView style={{ flex: 1, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', paddingHorizontal: 15, }}>
+          <ScrollView style={{ flex: 1, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', paddingHorizontal: 10 }}>
             <DateInfo isDay={ isDay() } onSettingsPress={ this.handleShowPlacesModal } />
             <WeatherInfo
               isDay={ isDay() }

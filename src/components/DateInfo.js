@@ -12,6 +12,7 @@ const DateInfo = ({ isDay, onSettingsPress }) => (
   <View style={{
     justifyContent: 'center',
     marginTop: 20,
+    marginHorizontal: 5,
   }}>
     <View style={{
       alignItems: 'flex-end',

@@ -8,7 +8,7 @@ import DateInfo from './components/DateInfo';
 import { isDay } from './libs';
 import PlacesModal from './components/PlacesModal';
 import store from './store/store';
-import { setWeatherCity, addToNote } from './store/actions';
+import { setWeatherCity, addToNote, deleteNote } from './store/actions';
 import { connect } from 'react-redux';
 import Notes from './components/Notes';
 import AddNoteModal from './components/AddNoteModal';
@@ -56,6 +56,12 @@ class Layout extends Component {
     this.handleAddNoteModalHide();
   };
 
+  handleRemoveNote = (noteId) => {
+    store.dispatch(deleteNote({
+      id: noteId,
+    }));
+  };
+
   render() {
     const { isPlacesModalShown, isNoteModalShown } = this.state;
 
@@ -87,6 +93,7 @@ class Layout extends Component {
               isDay={ isDay() }
               onAddNotePress={ this.handleAddNoteModalShow }
               notes={ this.props.notes }
+              onRemovePress={ this.handleRemoveNote }
             />
             <View style={{ height: 30, backgroundColor: 'transparent' }} />
           </ScrollView>

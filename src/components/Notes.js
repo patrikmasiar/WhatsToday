@@ -4,11 +4,12 @@ import { View, FlatList } from 'react-native';
 import FaIcon from 'react-native-vector-icons/FontAwesome';
 import AddNoteBtn from './ui/AddNoteBtn';
 import NoteListItem from './ui/NoteListItem';
+import NoteEmptyMessage from './ui/NoteEmtyMessage';
 
 class Notes extends Component {
 
   render() {
-    const {isDay, onAddNotePress, notes} = this.props;
+    const {isDay, onAddNotePress, notes, onRemovePress} = this.props;
 
     return (
       <View
@@ -37,8 +38,10 @@ class Notes extends Component {
             <NoteListItem
               message={item.item.text}
               isDay={isDay}
+              onRemovePress={onRemovePress.bind(this, item.item.id)}
             />
           )}
+          ListEmptyComponent={() => <NoteEmptyMessage />}
           ItemSeparatorComponent={() => <View style={{ height: 10, backgroundColor: 'transparent' }} />}
         />
       </View>
@@ -49,6 +52,7 @@ class Notes extends Component {
 Notes.propTypes = {
   onAddNotePress: PropTypes.func.isRequired,
   isDay: PropTypes.bool.isRequired,
+  onRemovePress: PropTypes.func.isRequired,
 };
 
 export default Notes;

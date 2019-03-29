@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import FaIcon from 'react-native-vector-icons/FontAwesome';
 
-const NoteListItem = ({ message, isDay }) => (
+const NoteListItem = ({ message, isDay, onRemovePress }) => (
   <View
     style={{
       flex: 1,
@@ -25,10 +25,10 @@ const NoteListItem = ({ message, isDay }) => (
       flexDirection: 'row',
     }}
   >
-    <Text style={{color: '#000'}}>
+    <Text style={{color: '#000', paddingRight: 30}}>
       {message}
     </Text>
-    <TouchableOpacity style={{ marginTop: 1, alignSelf: 'flex-start', marginLeft: 'auto' }} hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
+    <TouchableOpacity onPress={onRemovePress} style={{ marginTop: 1, alignSelf: 'flex-start', marginLeft: 'auto' }} hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
       <FaIcon name={ 'trash' } color={ "gray" } size={ 17 } />
     </TouchableOpacity>
   </View>
@@ -37,6 +37,7 @@ const NoteListItem = ({ message, isDay }) => (
 NoteListItem.propTypes = {
   message: PropTypes.string.isRequired,
   isDay: PropTypes.bool.isRequired,
+  onRemovePress: PropTypes.func.isRequired,
 };
 
 export default NoteListItem;

@@ -82,7 +82,7 @@ class AddNoteModal extends Component {
                     height: 5,
                 },color: '#000', marginHorizontal: 15, borderRadius: 40, backgroundColor: '#fff', flex: 1, minHeight: 45, maxHeight: 150, padding: 10 }}
                 />
-                <TouchableOpacity onPress={this.handleSubmit} style={{ height: 45, alignItems: 'center', justifyContent: 'center', marginRight: 20 }}>
+                <TouchableOpacity hitSlop={{top: 20, right: 20, left: 15, bottom: 20}} onPress={this.handleSubmit} style={{ height: 45, alignItems: 'center', justifyContent: 'center', marginRight: 20 }}>
                   <FaIcon name={ 'paper-plane' } color={ 'white' } size={ 25 } />
                 </TouchableOpacity>
               </View>

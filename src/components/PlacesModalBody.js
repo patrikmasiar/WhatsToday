@@ -13,15 +13,25 @@ class PlacesModalBody extends Component {
     const { inputValue } = this.state;
 
     if ( inputValue.length === 0 ) {
-      return cities;
+      return cities.sort((a, b) => {
+        if(a.name < b.name) { return -1; }
+        if(a.name > b.name) { return 1; }
+        return 0;
+      });
     }
 
-    return cities.filter((item) => {
+    const filteredCities = cities.filter((item) => {
       const search = String(inputValue).toLowerCase()
         .replace(/[\u0300-\u036f]/g, '');
       return String(item.name).toLowerCase()
         .replace(/[\u0300-\u036f]/g, '')
         .includes(search);
+    });
+
+    return filteredCities.sort((a, b) => {
+      if(a.name < b.name) { return -1; }
+      if(a.name > b.name) { return 1; }
+      return 0;
     });
   };
 

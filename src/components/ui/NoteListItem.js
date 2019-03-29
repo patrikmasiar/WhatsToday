@@ -7,13 +7,10 @@ const NoteListItem = ({ message, isDay, onRemovePress }) => (
   <View
     style={{
       flex: 1,
-      backgroundColor: '#fff',
-      //width: '100%',
-      //paddingVertical: 15,
-      //justifyContent: 'center',
+      backgroundColor: '#f9f9f9',
       borderWidth: isDay ? 0.8 : 0,
       borderColor: isDay ? '#f0f0f0' : 'transparent',
-      padding: 10,
+      padding: 15,
       borderRadius: 8,
       elevation: isDay ? 1 : 2,
       shadowOpacity: 0.6,
@@ -23,13 +20,14 @@ const NoteListItem = ({ message, isDay, onRemovePress }) => (
           height: isDay ? 0 : 2,
       },
       flexDirection: 'row',
+      marginBottom: 10
     }}
   >
     <Text style={{color: '#000', paddingRight: 30}}>
       {message}
     </Text>
     <TouchableOpacity onPress={onRemovePress} style={{ marginTop: 1, alignSelf: 'flex-start', marginLeft: 'auto' }} hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>
-      <FaIcon name={ 'trash' } color={ "gray" } size={ 17 } />
+      <FaIcon name={ 'trash' } color={ "#D32F2F" } size={ 18 } />
     </TouchableOpacity>
   </View>
 );

@@ -2,10 +2,10 @@ import React from 'react';
 import { Modal as ReactNativeModal, View } from 'react-native';
 import PropTypes from 'prop-types';
 
-const Modal = ({ visible, onRequestClose, children, backgroundColor }) =>
+const Modal = ({ visible, onRequestClose, children, backgroundColor, animationType }) =>
   (<ReactNativeModal
     visible={ visible }
-    animationType={ 'slide' }
+    animationType={ animationType }
     hardwareAccelerated
     onRequestClose={ onRequestClose }
     transparent
@@ -25,6 +25,7 @@ Modal.propTypes = {
   onRequestClose: PropTypes.func,
   children: PropTypes.node,
   backgroundColor: PropTypes.string,
+  animationType: PropTypes.string,
 };
 
 export default Modal;

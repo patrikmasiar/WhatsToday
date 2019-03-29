@@ -40,7 +40,7 @@ class AddNoteModal extends Component {
         visible={ isVisible }
         onRequestClose={ onModalClose }
         backgroundColor={ 'transparent' }
-        animation="fade"
+        animationType={ "fade" }
       >
         <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.3)' }}>
             <TouchableOpacity onPress={this.handleModalClose} style={{ flex: 1 }} activeOpacity={0} />

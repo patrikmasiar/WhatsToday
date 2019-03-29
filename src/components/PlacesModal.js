@@ -15,6 +15,7 @@ class PlacesModal extends Component {
         visible={ isVisible }
         onRequestClose={ onModalClose }
         backgroundColor={ isDay ? '#d0f1ff' : '#194a75' }
+        animationType={ "slide" }
       >
         <NavBar
           title={{

@@ -50,7 +50,7 @@ export const isDay = () => {
   const hour = parseInt(moment().format('H'));
 
   //return false;
-  return hour > 6 && hour < 19;
+  return hour > 5 && hour < 20;
 };
 
 export const getCityName = (cityId) => {

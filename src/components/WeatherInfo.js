@@ -5,6 +5,7 @@ import weatherIcons from '../data/icons.json';
 import PropTypes from 'prop-types';
 import { getCityName } from '../libs';
 import FaIcon from 'react-native-vector-icons/FontAwesome';
+import { FullScreenLoader } from './ui';
 
 class WeatherInfo extends Component {
 
@@ -14,6 +15,7 @@ class WeatherInfo extends Component {
     icon: null,
     max: null,
     min: null,
+    loading: false,
   };
 
   componentDidMount() {
@@ -42,6 +44,7 @@ class WeatherInfo extends Component {
   loadWeatherInfo = async (selectedPlace = null) => {
       if (selectedPlace !== null) {
         try {
+          this.setState({ loading: true });
           let response = await fetch(
             `http://api.openweathermap.org/data/2.5/weather?id=${selectedPlace}&appid=88e3301da7aca86544ed0acdea1b14f0`,
           );
@@ -52,8 +55,10 @@ class WeatherInfo extends Component {
             min: parseFloat(responseJson.main.temp_min - 273.15).toFixed(1),
             city: getCityName(selectedPlace),
             icon: responseJson.weather[0].id,
+            loading: false,
           });
         } catch (error) {
+          this.setState({ loading: false });
           console.error(error);
         }
       }
@@ -78,7 +83,7 @@ class WeatherInfo extends Component {
   }
 
   render() {
-    const { icon } = this.state;
+    const { icon, loading } = this.state;
     const { isDay } = this.props;
 
     return (
@@ -87,6 +92,7 @@ class WeatherInfo extends Component {
         borderRadius: 20,
         alignItems: 'center',
       }}>
+        {loading && <FullScreenLoader />}
         <Text style={{ color: isDay ? '#000' : '#fff', fontSize: 35, marginHorizontal: 5, marginTop: 8, fontWeight: '500', alignSelf: 'flex-start' }}>
           {this.state.city}
         </Text>

@@ -23,7 +23,7 @@ const NoteListItem = ({ message, isDay, onRemovePress }) => (
       marginBottom: 10
     }}
   >
-    <Text style={{color: '#000', paddingRight: 30}}>
+    <Text selectable selectionColor={'lightblue'} style={{color: '#000', paddingRight: 30}}>
       {message}
     </Text>
     <TouchableOpacity onPress={onRemovePress} style={{ marginTop: 1, alignSelf: 'flex-start', marginLeft: 'auto' }} hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}>

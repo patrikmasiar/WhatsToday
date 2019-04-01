@@ -7,7 +7,7 @@ const LIGHT_TEXT = '#fff';
 const DARK_TEXT = '#000';
 
 const NameDayInfo = ({ isDay }) => (
-  <View style={[style.wrapper, isDay && style.wrapperNight]}>
+  <View style={[style.wrapper, !isDay && style.wrapperNight]}>
     <Text style={{
       color: isDay ? '#26639a' : LIGHT_TEXT,
       fontWeight: '500',

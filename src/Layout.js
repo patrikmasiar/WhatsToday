@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Alert } from 'react-native';
 import { NavBar } from './components/ui';
 import Title from './components/Title';
 import WeatherInfo from './components/WeatherInfo';
@@ -57,9 +57,22 @@ class Layout extends Component {
   };
 
   handleRemoveNote = (noteId) => {
-    store.dispatch(deleteNote({
-      id: noteId,
-    }));
+    Alert.alert(
+      'Vymazať poznámku?',
+      'Naozaj si želáte vymazať poznámku?',
+      [
+        {
+          text: 'Zrušiť',
+          onPress: () => null,
+          style: 'cancel',
+        },
+        {text: 'Vymazať', onPress: () => store.dispatch(deleteNote({
+          id: noteId,
+        }))},
+      ],
+      {cancelable: false},
+    );
+    
   };
 
   render() {

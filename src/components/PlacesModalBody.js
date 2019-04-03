@@ -59,6 +59,7 @@ class PlacesModalBody extends Component {
             placeholder="Vyhľadať mesto"
             onChangeText={value => this.setState({inputValue: value})}
             value={ inputValue }
+            autoFocus
           />
         </View>
         <FlatList

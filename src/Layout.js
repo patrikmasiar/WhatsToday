@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Alert } from 'react-native';
-import { NavBar } from './components/ui';
+import { ScrollView, View, Alert, TouchableOpacity } from 'react-native';
+import { NavBar, NavbarButton } from './components/ui';
 import Title from './components/Title';
 import WeatherInfo from './components/WeatherInfo';
 import NameDayInfo from './components/NameDayInfo';
@@ -82,9 +82,10 @@ class Layout extends Component {
       <View style={{flex: 1}}>
         <NavBar
           title={ <Title /> }
+          rightButton={ <NavbarButton iconName={ 'cog' } onPress={ this.handleShowPlacesModal } /> }
         />
         <ScrollView style={{ backgroundColor: isDay() ? DAY_BG : NIGHT_BG, flex: 1, paddingHorizontal: 10 }}>
-          <DateInfo isDay={ isDay() } onSettingsPress={ this.handleShowPlacesModal } />
+          <DateInfo isDay={ isDay() } />
           <WeatherInfo
             isDay={ isDay() }
             selectedPlace={ this.props.city }

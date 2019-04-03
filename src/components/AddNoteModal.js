@@ -55,6 +55,7 @@ class AddNoteModal extends Component {
                   value={ value }
                   onChangeText={ this.handleInputChange }
                   style={style.field}
+                  textAlignVertical={'top'}
                 />
                 <TouchableOpacity hitSlop={HIT_SLOP} onPress={this.handleSubmit} style={style.sendBtn}>
                   <FaIcon name={ 'paper-plane' } color={ 'white' } size={ 25 } />
@@ -88,8 +89,6 @@ const style = StyleSheet.create({
         height: 5,
     },
     backgroundColor: '#26639a',
-    borderTopWidth: 1,
-    borderTopColor: 'lightgray',
   },
   innerFieldWrapper: {
     flexDirection: 'row',
@@ -107,17 +106,17 @@ const style = StyleSheet.create({
     },
     color: '#000',
     marginHorizontal: 15,
-    borderRadius: 40,
+    borderRadius: 15,
     backgroundColor: '#fff',
     flex: 1,
     minHeight: 45,
-    maxHeight: 150,
-    padding: 10 
+    maxHeight: 160,
+    padding: 20,
+    minHeight: 80,
   },
   sendBtn: {
     height: 45,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignSelf: 'flex-end',
     marginRight: 20
   }
 })

@@ -8,34 +8,23 @@ const HIT_SLOP = {top: 20, right: 20, left: 15, bottom: 20};
 
 class AddNoteModal extends Component {
 
-  state = {
-    value: '',
-  };
-
-  handleInputChange = (value) => {
-    this.setState({ value });
-  };
-
   handleSubmit = () => {
-    if (this.state.value.length === 0) {
+    if (this.props.value.length === 0) {
       Alert.alert('Zadajte poznámku');
       return false;
     }
 
     Keyboard.dismiss();
-    this.setState({value: ''});
-    this.props.onSubmit(this.state.value);
+    this.props.onSubmit();
   }
 
   handleModalClose = () => {
     Keyboard.dismiss();
-    this.setState({value: ''});
     this.props.onModalClose();
   }
 
   render() {
-    const { isVisible, onModalClose } = this.props;
-    const { value } = this.state;
+    const { isVisible, onModalClose, value, onValueChange } = this.props;
 
     return (
       <Modal
@@ -53,7 +42,7 @@ class AddNoteModal extends Component {
                   multiline={true}
                   placeholder={ "Poznámka..." }
                   value={ value }
-                  onChangeText={ this.handleInputChange }
+                  onChangeText={ value => onValueChange(value) }
                   style={style.field}
                   textAlignVertical={'top'}
                 />
@@ -72,6 +61,8 @@ AddNoteModal.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onModalClose: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  onValueChange: PropTypes.func.isRequired,
 };
 
 const style = StyleSheet.create({

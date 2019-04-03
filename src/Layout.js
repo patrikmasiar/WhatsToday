@@ -21,6 +21,7 @@ class Layout extends Component {
   state = {
     isPlacesModalShown: false,
     isNoteModalShown: false,
+    noteValue: '',
   };
 
   handleShowPlacesModal = () => {
@@ -29,6 +30,10 @@ class Layout extends Component {
 
   handleHidePlacesModal = () => {
     this.setState({ isPlacesModalShown: false });
+  };
+
+  handleNoteValueChange = (value) => {
+    this.setState({ noteValue: value });
   };
 
   handleSelectPlace = (placeId) => {
@@ -45,12 +50,20 @@ class Layout extends Component {
   };
 
   handleAddNoteModalHide = () => {
-    this.setState({ isNoteModalShown: false });
+    this.setState({ isNoteModalShown: false, noteValue: '' });
   };
 
-  handleAddNewNote = (note) => {
+  handleNotePress = (id, text) => {
+    this.setState({
+      isNoteModalShown: true,
+      noteIdForEdit: id,
+      noteValue: text,
+    });
+  };
+
+  handleAddNewNote = () => {
     store.dispatch(addToNote({
-      text: note,
+      text: this.state.noteValue,
       createdAt: new Date(),
     }));
     this.handleAddNoteModalHide();
@@ -76,7 +89,7 @@ class Layout extends Component {
   };
 
   render() {
-    const { isPlacesModalShown, isNoteModalShown } = this.state;
+    const { isPlacesModalShown, isNoteModalShown, noteValue } = this.state;
 
     return (
       <View style={{flex: 1}}>
@@ -97,6 +110,7 @@ class Layout extends Component {
             onAddNotePress={ this.handleAddNoteModalShow }
             notes={ this.props.notes }
             onRemovePress={ this.handleRemoveNote }
+            onItemPress={ this.handleNotePress }
           />
           <View style={{ height: 30, backgroundColor: 'transparent' }} />
         </ScrollView>
@@ -110,6 +124,8 @@ class Layout extends Component {
           isVisible={ isNoteModalShown }
           onModalClose={ this.handleAddNoteModalHide }
           onSubmit={this.handleAddNewNote}
+          value={ noteValue }
+          onValueChange={ this.handleNoteValueChange }
         />
       </View>
     );

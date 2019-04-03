@@ -8,10 +8,10 @@ import NoteEmptyMessage from './NoteEmtyMessage';
 class Notes extends Component {
 
   render() {
-    const {isDay, onAddNotePress, notes, onRemovePress} = this.props;
+    const {isDay, onAddNotePress, notes, onRemovePress, onItemPress } = this.props;
 
     return (
-      <View style={[ style.wrapper, !isDay && style.wrpperNight ]}>
+      <View style={[ style.wrapper, !isDay && style.wrapperNight ]}>
         <AddNoteBtn isDay={ isDay } onPress={ onAddNotePress } />
         <FlatList
           scrollEnabled={ false }
@@ -23,6 +23,7 @@ class Notes extends Component {
               message={ item.item.text }
               isDay={ isDay }
               onRemovePress={onRemovePress.bind(this, item.item.id)}
+              onItemPress={onItemPress.bind(this, item.item.id, item.item.text)}
             />
           )}
           ListEmptyComponent={() => <NoteEmptyMessage />}
@@ -36,6 +37,7 @@ Notes.propTypes = {
   onAddNotePress: PropTypes.func.isRequired,
   isDay: PropTypes.bool.isRequired,
   onRemovePress: PropTypes.func.isRequired,
+  onItemPress: PropTypes.func.isRequired,
 };
 
 const style = StyleSheet.create({
@@ -54,7 +56,7 @@ const style = StyleSheet.create({
     },
     paddingHorizontal: 15,
   },
-  wrpperNight: {
+  wrapperNight: {
     backgroundColor: '#194a75',
   },
   list: {

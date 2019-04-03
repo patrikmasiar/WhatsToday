@@ -16,6 +16,7 @@ export const setWeatherCity = city => ({
 export const ADD_TO_NOTES = 'ADD_TO_NOTES';
 export const DELETE_NOTE = 'DELETE_NOTE';
 export const TOOGLE_NOTE = 'TOOGLE_NOTE';
+export const UPDATE_NOTE_TEXT = 'UPDATE_NOTE_TEXT';
 
 export const addToNote = todos => ({
   type: ADD_TO_NOTES,
@@ -30,4 +31,9 @@ export const deleteNote = payload => ({
 export const toogleNote = payload => ({
   type: TOOGLE_NOTE,
   payload,
-})
+});
+
+export const updateNoteText = payload => ({
+  type: UPDATE_NOTE_TEXT,
+  payload,
+});

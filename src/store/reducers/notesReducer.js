@@ -25,6 +25,18 @@ export default (state = initialState, action) => {
         notes: newNotes,
       }
 
+    case 'UPDATE_NOTE_TEXT':
+      const newNotesArray = state.notes.map(item =>
+        (item.id === action.payload.id)
+          ? {...item, text: action.payload.text}
+          : item
+      )
+
+      return {
+        ...state,
+        notes: newNotesArray,
+      }
+
     case 'TOOGLE_NOTE':
       const updatedNotes = state.notes.map(item =>
         (item.id === action.payload.id)

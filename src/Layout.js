@@ -8,7 +8,7 @@ import DateInfo from './components/DateInfo';
 import { isDay } from './libs';
 import PlacesModal from './components/PlacesModal';
 import store from './store/store';
-import { setWeatherCity, addToNote, deleteNote } from './store/actions';
+import { setWeatherCity, addToNote, deleteNote, updateNoteText } from './store/actions';
 import { connect } from 'react-redux';
 import Notes from './components/Notes';
 import AddNoteModal from './components/AddNoteModal';
@@ -22,6 +22,7 @@ class Layout extends Component {
     isPlacesModalShown: false,
     isNoteModalShown: false,
     noteValue: '',
+    noteIdForEdit: null,
   };
 
   handleShowPlacesModal = () => {
@@ -50,7 +51,11 @@ class Layout extends Component {
   };
 
   handleAddNoteModalHide = () => {
-    this.setState({ isNoteModalShown: false, noteValue: '' });
+    this.setState({
+      isNoteModalShown: false,
+      noteValue: '',
+      noteIdForEdit: null
+    });
   };
 
   handleNotePress = (id, text) => {
@@ -62,10 +67,18 @@ class Layout extends Component {
   };
 
   handleAddNewNote = () => {
-    store.dispatch(addToNote({
-      text: this.state.noteValue,
-      createdAt: new Date(),
-    }));
+    if (this.state.noteIdForEdit !== null) {
+      store.dispatch(updateNoteText({
+        id: this.state.noteIdForEdit,
+        text: this.state.noteValue,
+      }));
+    } else {
+      store.dispatch(addToNote({
+        text: this.state.noteValue,
+        createdAt: new Date(),
+      }));
+    }
+    
     this.handleAddNoteModalHide();
   };
 

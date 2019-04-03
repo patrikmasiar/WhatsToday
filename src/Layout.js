@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Alert, TouchableOpacity } from 'react-native';
+import { ScrollView, View, Alert } from 'react-native';
 import { NavBar, NavbarButton } from './components/ui';
 import Title from './components/Title';
 import WeatherInfo from './components/WeatherInfo';

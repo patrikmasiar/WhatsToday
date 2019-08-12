@@ -5,7 +5,7 @@
 
 
 # WhatsToday
-What is today mobile application about weather and current time.
+What is today mobile application about weather, nameday info and personal notes.
 
 ## Google Play
 https://play.google.com/store/apps/details?id=com.whatstoday

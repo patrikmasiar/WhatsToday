@@ -1,18 +1,18 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import { getNameDay } from '../libs/index.js';
+import {Text, View, StyleSheet} from 'react-native';
+import {getNameDay} from '../libs/index.js';
 import PropTypes from 'prop-types';
 
 const LIGHT_TEXT = '#fff';
 const DARK_TEXT = '#000';
 
-const NameDayInfo = ({ isDay }) => (
+const NameDayInfo = ({isDay}) => (
   <View style={[style.wrapper, !isDay && style.wrapperNight]}>
-    <Text style={{
-      color: isDay ? '#26639a' : LIGHT_TEXT,
-      fontWeight: '500',
-      fontSize: 16,
-    }}>
+    <Text style={[
+      style.title,
+      {color: isDay ? '#26639a' : LIGHT_TEXT}
+      ]}
+    >
       DNES MÁ MENINY:
     </Text>
     <View style={style.innerWrapper}>
@@ -57,6 +57,10 @@ const style = StyleSheet.create({
   innerWrapper: {
     flexDirection: 'row',
     marginTop: 15
+  },
+  title: {
+    fontWeight: '500',
+    fontSize: 16,
   },
   name: {
     fontSize: 16,

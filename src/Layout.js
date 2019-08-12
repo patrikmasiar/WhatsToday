@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { ScrollView, View, Alert } from 'react-native';
-import { NavBar, NavbarButton } from './components/ui';
+import React, {Component} from 'react';
+import {ScrollView, View, Alert, StyleSheet} from 'react-native';
+import {NavBar, NavbarButton} from './components/ui';
 import Title from './components/Title';
 import WeatherInfo from './components/WeatherInfo';
 import NameDayInfo from './components/NameDayInfo';
 import DateInfo from './components/DateInfo';
-import { isDay } from './libs';
+import {isDay} from './libs';
 import PlacesModal from './components/PlacesModal';
 import store from './store/store';
-import { setWeatherCity, addToNote, deleteNote, updateNoteText } from './store/actions';
-import { connect } from 'react-redux';
+import {setWeatherCity, addToNote, deleteNote, updateNoteText} from './store/actions';
+import {connect} from 'react-redux';
 import Notes from './components/Notes';
 import AddNoteModal from './components/AddNoteModal';
 
@@ -25,6 +25,8 @@ class Layout extends Component {
     noteIdForEdit: null,
   };
 
+  isDay = isDay();
+
   handleShowPlacesModal = () => {
     this.setState({ isPlacesModalShown: true });
   };
@@ -33,11 +35,11 @@ class Layout extends Component {
     this.setState({ isPlacesModalShown: false });
   };
 
-  handleNoteValueChange = (value) => {
+  handleNoteValueChange = value => {
     this.setState({ noteValue: value });
   };
 
-  handleSelectPlace = (placeId) => {
+  handleSelectPlace = placeId => {
     store.dispatch(setWeatherCity({
       city: placeId,
     }));
@@ -102,48 +104,67 @@ class Layout extends Component {
   };
 
   render() {
-    const { isPlacesModalShown, isNoteModalShown, noteValue } = this.state;
+    const {isPlacesModalShown, isNoteModalShown, noteValue} = this.state;
 
     return (
-      <View style={{flex: 1}}>
+      <View style={style.wrapper}>
         <NavBar
-          title={ <Title /> }
-          rightButton={ <NavbarButton iconName={ 'cog' } onPress={ this.handleShowPlacesModal } /> }
+          title={<Title />}
+          rightButton={<NavbarButton iconName='cog' onPress={this.handleShowPlacesModal} />}
         />
-        <ScrollView style={{ backgroundColor: isDay() ? DAY_BG : NIGHT_BG, flex: 1, paddingHorizontal: 10 }}>
-          <DateInfo isDay={ isDay() } />
+        <ScrollView style={[
+          stylw.innerWrapper,
+          {backgroundColor: this.isDay ? DAY_BG : NIGHT_BG}
+          ]}
+        >
+          <DateInfo isDay={this.isDay} />
           <WeatherInfo
-            isDay={ isDay() }
+            isDay={this.isDay}
             selectedPlace={ this.props.city }
             onSettingsPress={ this.handleShowPlacesModal }
           />
-          <NameDayInfo isDay={ isDay() } />
+          <NameDayInfo isDay={this.isDay} />
           <Notes
-            isDay={ isDay() }
+            isDay={this.isDay}
             onAddNotePress={ this.handleAddNoteModalShow }
             notes={ this.props.notes }
             onRemovePress={ this.handleRemoveNote }
             onItemPress={ this.handleNotePress }
           />
-          <View style={{ height: 30, backgroundColor: 'transparent' }} />
+          <View style={style.space} />
         </ScrollView>
         <PlacesModal
-          isVisible={ isPlacesModalShown }
-          onModalClose={ this.handleHidePlacesModal }
-          isDay={ isDay() }
-          onSelectPlace={ this.handleSelectPlace }
+          isVisible={isPlacesModalShown}
+          onModalClose={this.handleHidePlacesModal}
+          isDay={this.isDay}
+          onSelectPlace={this.handleSelectPlace}
         />
         <AddNoteModal
-          isVisible={ isNoteModalShown }
-          onModalClose={ this.handleAddNoteModalHide }
+          isVisible={isNoteModalShown}
+          onModalClose={this.handleAddNoteModalHide}
           onSubmit={this.handleAddNewNote}
-          value={ noteValue }
-          onValueChange={ this.handleNoteValueChange }
+          value={noteValue}
+          onValueChange={this.handleNoteValueChange}
         />
       </View>
     );
   }
+
 }
+
+const style = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
+  innerWrapper: {
+    flex: 1,
+    paddingHorizontal: 10,
+  },
+  space: {
+    height: 30,
+    backgroundColor: 'transparent',
+  },
+});
 
 const mapStateToProps = state => ({
   city: state.city.city,

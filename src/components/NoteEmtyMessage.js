@@ -1,15 +1,19 @@
 import React from 'react';
-import { Text } from 'react-native';
+import {Text, StyleSheet} from 'react-native';
 
 const NoteEmptyMessage = () => (
-  <Text style={{
+  <Text style={style.title}>
+    Žiadne poznámky
+  </Text>
+);
+
+const style = StyleSheet.create({
+  title: {
     color: 'gray',
     alignSelf: 'center',
     marginTop: 20,
     fontSize: 16
-  }}>
-    Žiadne poznámky
-  </Text>
-);
+  },
+});
 
 export default NoteEmptyMessage;

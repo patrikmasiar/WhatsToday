@@ -1,15 +1,15 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import FaIcon from 'react-native-vector-icons/FontAwesome';
 
-const AddNoteBtn = ({ onPress, isDay }) => (
+const AddNoteBtn = ({onPress, isDay}) => (
   <TouchableOpacity
     style={[style.wrapper, !isDay && style.wrapperNight]}
     onPress={onPress}
     activeOpacity={0.8}
   >
-    <FaIcon name={'plus'} color={ isDay ? '#fff' : '#000' } size={ 14 } />
+    <FaIcon name={'plus'} color={isDay ? '#fff' : '#000'} size={14} />
     <Text style={[style.label, !isDay && style.labelNight]}>
       Pridať poznámku
     </Text>

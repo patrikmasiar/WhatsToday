@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, TouchableOpacity, TextInput, Alert, Keyboard, StyleSheet } from 'react-native';
-import { Modal } from './ui';
+import {View, TouchableOpacity, TextInput, Alert, Keyboard, StyleSheet} from 'react-native';
+import {Modal} from './ui';
 import FaIcon from 'react-native-vector-icons/FontAwesome';
 
 const HIT_SLOP = {top: 20, right: 20, left: 15, bottom: 20};

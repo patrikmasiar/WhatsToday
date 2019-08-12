@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, NetInfo } from 'react-native';
+import {Text, View, NetInfo, StyleSheet} from 'react-native';
 import Icon from '../libs/weatherIcon';
 import weatherIcons from '../data/icons.json';
 import PropTypes from 'prop-types';
@@ -83,20 +83,16 @@ class WeatherInfo extends Component {
   }
 
   render() {
-    const { icon, loading } = this.state;
-    const { isDay } = this.props;
+    const {icon, loading} = this.state;
+    const {isDay} = this.props;
 
     return (
-      <View style={{
-        paddingBottom: 15,
-        borderRadius: 20,
-        alignItems: 'center',
-      }}>
+      <View style={style.wrapper}>
         {loading && <FullScreenLoader />}
-        <Text style={{ color: isDay ? '#000' : '#fff', fontSize: 35, marginHorizontal: 5, marginTop: 8, fontWeight: '500', alignSelf: 'flex-start' }}>
+        <Text style={[style.title, {color: isDay ? '#000' : '#fff'}]}>
           {this.state.city}
         </Text>
-        <View style={{ alignItems: 'center', flexDirection: 'row', marginTop: 20 }}>
+        <View style={style.innerWrapper}>
           {icon !== null && (
             <Icon name={this.getIcon()} style={{ color: isDay ? '#26639a' : '#fff', fontSize: 160 }} />
           )}
@@ -129,6 +125,26 @@ class WeatherInfo extends Component {
     );
   }
 }
+
+const style = StyleSheet.create({
+  wrapper: {
+    paddingBottom: 15,
+    borderRadius: 20,
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 35,
+    marginHorizontal: 5,
+    marginTop: 8,
+    fontWeight: '500',
+    alignSelf: 'flex-start',
+  },
+  innerWrapper: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginTop: 20,
+  },
+});
 
 WeatherInfo.propTypes = {
   isDay: PropTypes.bool.isRequired,

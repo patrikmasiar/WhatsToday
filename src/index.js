@@ -4,13 +4,13 @@
  */
 
 import React from 'react';
-import { View, StatusBar, AppRegistry, AsyncStorage } from 'react-native';
+import {View, StatusBar, AppRegistry, AsyncStorage} from 'react-native';
 import Layout from './Layout';
 import {name as appName} from '../app.json';
-import { persistStore } from 'redux-persist';
-import { setAppReady } from './store/actions';
+import {persistStore} from 'redux-persist';
+import {setAppReady} from './store/actions';
 import store from './store/store';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 
 persistStore(
   store,
@@ -30,7 +30,7 @@ persistStore(
 const App = () => {
   return (
       <Provider store={store}>
-        <View style={{ flex: 1 }}>
+        <View style={{flex: 1}}>
           <StatusBar
             backgroundColor={ '#26639a' }
             barStyle={ 'light-content' }
